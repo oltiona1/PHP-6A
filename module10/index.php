@@ -31,8 +31,8 @@ if(isset($_POST['submit'])){
 </head>
 <body>
 
-<a href ="dashboard.php">Dashboad</a>
-<form method="post" action="add.php" >
+<a href="dashboard.php">Dashboad</a>
+<form method="post" action="index.php" >
 
     <label for="username">Username:</label>
     <input type="text" id="username" name="username">

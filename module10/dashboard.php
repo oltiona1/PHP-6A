@@ -4,18 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        table,td,th{
+            border: 1px solid black;
+            border-collapse:collapse ;
+        }
+        td,th{
+            padding: 10px 20px;
+        }
+
+
+    </style>
 </head>
 <body>
     
-</body>
-</html>
+
 
 <?php
 
+include_once('connection.php');
 
-include_once("connection.php");
-
-$sql="Select * from users";
-
-
+$sql="select * from users";
+$getUsers=$conn->prepare($sql);
+$getUsers->execute();
+$users=$getUsers->fetchAll();
 ?>
+
+
+<h2>Users</h2>
+
+<table>
+
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>password</th>
+
+    </tr>
+
+    <?php
+    foreach($users as $user){
+        echo "<tr>";
+        echo "<td>" . $user['id'] . "</td>";
+        echo "<td>" . $user['username'] . "</td>";
+        echo "<td>" . $user['password'] . "</td>";
+       echo "</tr>";
+    }
+
+    ?>
+</table>
+
+<br>
+<a href="index.php">Add User</a>
+
+
+
+
+
+
+</body>
+</html>
